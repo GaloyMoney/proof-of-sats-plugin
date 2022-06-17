@@ -1,0 +1,40 @@
+{
+  "name": "galoy-plugin-proof-of-liabilities",
+  "description": "plugin for galoy proof of liabilities",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thevaibhav-dixit/galoy-plugin-proof-of-liabilities.git"
+  },
+  "keywords": [
+    "proof-of-liabilities"
+  ],
+  "author": "Vaibhav Dixit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thevaibhav-dixit/galoy-plugin-proof-of-liabilities/issues"
+  },
+  "homepage": "https://github.com/thevaibhav-dixit/galoy-plugin-proof-of-liabilities#readme",
+  "dependencies": {
+    "@apollo/gateway": "^2.0.5",
+    "@apollo/subgraph": "^2.0.5",
+    "apollo-server": "^3.9.0",
+    "apollo-server-core": "^3.9.0",
+    "graphql": "^16.5.0",
+    "typescript": "^4.7.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.7.1",
+    "ts-node-dev": "^2.0.0",
+    "yarn": "^1.22.19"
+  }
+}
