@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "yarn tsnd --respawn --files index.ts"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "apollo-server": "^3.9.0",
     "apollo-server-core": "^3.9.0",
     "graphql": "^16.5.0",
+    "proof-of-liabilities": "../proof-of-liabilities/",
     "typescript": "^4.7.3"
   },
   "devDependencies": {
