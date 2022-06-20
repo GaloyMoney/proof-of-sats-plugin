@@ -23,10 +23,12 @@
   "dependencies": {
     "@apollo/gateway": "^2.0.5",
     "@apollo/subgraph": "^2.0.5",
+    "@types/node": "^18.0.0",
     "apollo-server": "^3.9.0",
     "apollo-server-core": "^3.9.0",
     "graphql": "^16.5.0",
     "proof-of-liabilities": "../proof-of-liabilities/",
+    "ts-node": "^10.8.1",
     "typescript": "^4.7.3"
   },
   "devDependencies": {
