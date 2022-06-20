@@ -1,5 +1,5 @@
 import { GT } from "../../index"
-
+import { PartialLiabilityProofs } from "./partial-liability-proofs"
 const LiabilityProof = GT.Object<LiabilityProof>({
   name: "LiabilityProof",
   description:
@@ -14,7 +14,7 @@ const LiabilityProof = GT.Object<LiabilityProof>({
       description: "The total balance of the wallet.",
     },
     partialLiabilityProofs: {
-      type: GT.NonNull(GT.String),
+      type: GT.List(PartialLiabilityProofs),
       description: "The serialized partial liability proofs of the wallet.",
     },
   }),
