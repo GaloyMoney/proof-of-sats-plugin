@@ -1,4 +1,4 @@
-import { fileSystemLiabilityTreeRepository } from "../src/services/fileSystemLiabilityTreeRepository"
+import { fileSystemLiabilityTreeRepository } from "../src/services/LiabilityTreeRepository/fileSystemLiabilityTreeRepository"
 
 describe("it test if a valid tree is being returned", () => {
   it("should return a tree", async () => {
