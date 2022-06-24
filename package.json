@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --no-cache --runInBand",
-    "start": "yarn tsnd --respawn --files index.ts"
+    "start": "yarn tsnd --respawn --files index.ts",
+    "build": "yarn tsnd --respawn --files index.ts",
+    "eslint-check": "eslint \"{src,test}/**/*.ts\"",
+    "eslint-fix": "eslint \"{src,test}/**/*.ts\" --fix",
+    "prettier-check": "prettier --check .",
+    "prettier-write": "prettier --write ."
   },
   "repository": {
     "type": "git",
