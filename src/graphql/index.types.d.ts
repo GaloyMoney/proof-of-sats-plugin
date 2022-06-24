@@ -19,3 +19,8 @@ type TreeNode = {
   hash: string
   sum: number
 }
+
+type LiabilityTree = {
+  merkleTree: Array<Array<TreeNode>>
+  accountToNonceMap: Map<string, string>
+}
