@@ -1,7 +1,7 @@
 import { createProof } from "proof-of-liabilities"
 import { GT } from "."
 import LiabilityProof from "./types/objects/liability-proof"
-import { fileSystemLiabilityTreeRepository } from "../services/LiabilityTreeRepository/fileSystemLiabilityTreeRepository"
+import { getTree } from "../app/index"
 const Proof = GT.Field({
   type: LiabilityProof,
   args: {
@@ -10,7 +10,7 @@ const Proof = GT.Field({
   },
   resolve: async (parent, args, context, info) => {
     const { accountId, merkleRoot } = args
-    const tree = await fileSystemLiabilityTreeRepository().findLiabilityTree(merkleRoot)
+    const tree = await getTree(merkleRoot)
     const proof = await createProof(accountId, tree)
     return {
       accountId,
