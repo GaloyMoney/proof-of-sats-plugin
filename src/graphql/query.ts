@@ -16,6 +16,7 @@ const Proof = GT.Field({
       accountId,
       partialLiabilityProofs: proof.partialLiabilityProofs,
       totalBalance: proof.totalBalance,
+      nonce: proof.nonce,
     }
   },
 })
