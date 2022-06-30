@@ -2,7 +2,8 @@ import { createProof } from "proof-of-liabilities"
 import { GT } from "."
 import LiabilityProof from "./types/objects/liability-proof"
 import { getTree } from "../app/index"
-const Proof = GT.Field({
+import { TreeMetadata } from "./types/objects/tree-metadata"
+const LiabilityProofQuery = GT.Field({
   type: LiabilityProof,
   args: {
     accountId: { type: GT.NonNull(GT.String) },
@@ -19,10 +20,27 @@ const Proof = GT.Field({
     }
   },
 })
+const TreeMetadataQuery = GT.Field({
+  type: TreeMetadata,
+  args: {
+    rootHash: { type: GT.NonNull(GT.String) },
+  },
+  resolve: async (parent, args, context, info) => {
+    const { rootHash } = args
+    const tree = await getTree(rootHash)
+    if (tree instanceof Error) return new Error("Tree not found")
+    return {
+      totalBalance: tree.treeMetadata.totalBalance,
+      rootHash: tree.treeMetadata.roothash,
+      date: new Date(tree.treeMetadata.timestamp).toLocaleString(),
+    }
+  },
+})
 
 export const Query = GT.Object({
   name: "Query",
   fields: () => ({
-    liabilityProof: Proof,
+    liabilityProof: LiabilityProofQuery,
+    TreeMetadata: TreeMetadataQuery,
   }),
 })
