@@ -20,7 +20,17 @@ type TreeNode = {
   sum: number
 }
 
-type LiabilityTree = {
+type Tree = {
   merkleTree: Array<Array<TreeNode>>
   accountToNonceMap: Map<string, string>
+}
+
+type TreeMetadata = {
+  roothash: string
+  totalBalance: number
+  timestamp: number
+}
+
+type LiabilityTree = Tree & {
+  treeMetadata: TreeMetadata
 }
