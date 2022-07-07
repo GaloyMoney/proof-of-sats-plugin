@@ -32,7 +32,7 @@ const TreeMetadataQuery = GT.Field({
     return {
       totalBalance: tree.treeMetadata.totalBalance,
       rootHash: tree.treeMetadata.roothash,
-      date: new Date(tree.treeMetadata.timestamp).toLocaleString(),
+      date: new Date(tree.treeMetadata.createdDate).toLocaleString(),
     }
   },
 })

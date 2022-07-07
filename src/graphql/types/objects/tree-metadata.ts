@@ -12,7 +12,7 @@ export const TreeMetadata = GT.Object({
       type: GT.NonNull(GT.String),
       description: "The root hash of the tree.",
     },
-    date: {
+    createdDate: {
       type: GT.NonNull(GT.String),
       description: "The date of publication of merkle tree.",
     },

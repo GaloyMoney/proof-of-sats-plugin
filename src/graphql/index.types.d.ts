@@ -28,7 +28,7 @@ type Tree = {
 type TreeMetadata = {
   roothash: string
   totalBalance: number
-  timestamp: number
+  createdDate: number
 }
 
 type LiabilityTree = Tree & {
