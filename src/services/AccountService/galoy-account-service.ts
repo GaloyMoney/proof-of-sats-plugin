@@ -2,7 +2,7 @@ import { GALOY_GRAPHQL_ENDPOINT } from "../../config/index"
 import fetch from "node-fetch"
 
 const GALOY_GRAPHQL_ENDPOINT_QUERY = `query{
-  wallets(walletCurrency:BTC)
+  allWallets(walletCurrency:BTC)
   {
     id
     balance
@@ -10,9 +10,7 @@ const GALOY_GRAPHQL_ENDPOINT_QUERY = `query{
 }`
 
 export const GaloyAccountService = (): IAccountService => {
-  const fetchAccounts = async (): Promise<
-    Array<{ accountId: string; balance: number }> | Error
-  > => {
+  const fetchAccounts = async (): Promise<Account[] | Error> => {
     try {
       const response = await fetch(GALOY_GRAPHQL_ENDPOINT, {
         method: "POST",
@@ -25,7 +23,7 @@ export const GaloyAccountService = (): IAccountService => {
         }),
       })
       const data = await response.json()
-      return mapToAccountLiability(data.data.wallets)
+      return mapToAccountLiability(data.data.allWallets)
     } catch (error) {
       return error
     }
@@ -38,10 +36,7 @@ const mapToAccountLiability = (
     id: string
     balance: number
   }[],
-): {
-  accountId: string
-  balance: number
-}[] => {
+): Account[] => {
   return wallets.map((wallet) => {
     return {
       accountId: wallet.id,

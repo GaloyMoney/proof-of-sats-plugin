@@ -1,8 +1,7 @@
-import { fetchAccounts } from "../src/app/create-tree"
-
+import { GaloyAccountService } from "../src/services/AccountService/galoy-account-service"
 describe("test the fetchAccount function", () => {
   it("should return an object", async () => {
-    const result = await fetchAccounts()
+    const result = await GaloyAccountService().fetchAccounts()
     expect(result).toBeDefined()
     expect(result).toBeInstanceOf(Array)
     expect(result[0]).toBeInstanceOf(Object)

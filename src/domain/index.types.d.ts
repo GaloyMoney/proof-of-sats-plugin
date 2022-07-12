@@ -1,3 +1,8 @@
+type Account = {
+  accountId: string
+  balance: number
+}
+
 type LiabilityProof = {
   accountId: string
   totalBalance: number
@@ -23,4 +28,8 @@ type TreeNode = {
 type LiabilityTree = {
   merkleTree: Array<Array<TreeNode>>
   accountToNonceMap: Map<string, string>
+}
+
+interface IAccountService {
+  fetchAccounts: () => Promise<Account[] | Error>
 }
