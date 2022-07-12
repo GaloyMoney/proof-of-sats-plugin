@@ -2,7 +2,9 @@ import { ApolloServer } from "apollo-server"
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core"
 import { GraphQLSchema } from "graphql"
 import { Query } from "./src/graphql/query"
+import connectDB from "./src/services/mongodb/index"
 
+connectDB()
 const schema = new GraphQLSchema({
   query: Query,
 })
