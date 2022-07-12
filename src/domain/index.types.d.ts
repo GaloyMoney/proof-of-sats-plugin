@@ -33,3 +33,13 @@ type LiabilityTree = {
 interface IAccountService {
   fetchAccounts: () => Promise<Account[] | Error>
 }
+
+type TreeMetadata = {
+  roothash: string
+  totalBalance: number
+  dateCreated: string
+}
+interface ITreeMetadataRepository {
+  persistNew: (roothash: string, totalBalance: number) => Promise<void | Error>
+  findLatestTreeMetadata: () => Promise<TreeMetadata | Error>
+}
