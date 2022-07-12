@@ -17,6 +17,10 @@ const LiabilityProof = GT.Object<LiabilityProof>({
       type: GT.List(PartialLiabilityProofs),
       description: "The serialized partial liability proofs of the wallet.",
     },
+    nonce: {
+      type: GT.NonNull(GT.String),
+      description: "The nonce of the proof.",
+    },
   }),
 })
 
