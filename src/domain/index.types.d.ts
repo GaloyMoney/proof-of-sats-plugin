@@ -40,6 +40,12 @@ type TreeMetadata = {
   dateCreated: string
 }
 interface ITreeMetadataRepository {
-  persistNew: (roothash: string, totalBalance: number) => Promise<void | Error>
+  persistNew: (roothash: string, totalBalance: number) => Promise<TreeMetadata | Error>
   findLatestTreeMetadata: () => Promise<TreeMetadata | Error>
+}
+
+interface TreeMetadataRecord {
+  roothash: string
+  totalBalance: number
+  dateCreated: Date
 }

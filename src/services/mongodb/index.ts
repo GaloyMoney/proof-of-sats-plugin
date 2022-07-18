@@ -1,21 +1,20 @@
-import * as dotenv from "dotenv"
 import mongoose, { ConnectOptions } from "mongoose"
-dotenv.config()
+import { BASE_URL } from "../../config"
 
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  keepAlive: true,
 }
-const connectDB = () => {
-  return mongoose.connect(process.env.DATABASE_URL!, options as ConnectOptions, (err) => {
-    if (err) {
-      console.error("Connection to DB failed")
-    } else {
-      console.log("Connection to DB was successful")
-    }
-  })
-}
-const db = mongoose.connection
-db.on("error", console.error.bind(console, "MongoDB connection failed"))
 
-export default connectDB
+const dbconnnection = async () => {
+  await mongoose
+    .connect(BASE_URL, options as ConnectOptions)
+    .then(() => {
+      console.log(`Connected to Mongo!`)
+    })
+    .catch((err) => console.log(err))
+  return mongoose
+}
+
+export default dbconnnection

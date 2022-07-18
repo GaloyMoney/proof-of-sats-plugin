@@ -1,16 +1,7 @@
 import { TreeMetadata } from "./schema"
 
-interface TreeMetadataRecord {
-  roothash: string
-  totalBalance: number
-  dateCreated: Date
-}
-
 export const TreeMetadataRepository = (): ITreeMetadataRepository => {
-  const persistNew = async (
-    roothash: string,
-    totalBalance: number,
-  ): Promise<void | Error> => {
+  const persistNew = async (roothash: string, totalBalance: number) => {
     const dateCreated = new Date()
     try {
       const treeMetadata = new TreeMetadata({
@@ -19,6 +10,7 @@ export const TreeMetadataRepository = (): ITreeMetadataRepository => {
         dateCreated,
       })
       await treeMetadata.save()
+      return resultToTreeMetadata(treeMetadata)
     } catch (err) {
       return err
     }
