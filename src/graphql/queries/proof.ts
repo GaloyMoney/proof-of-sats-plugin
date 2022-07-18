@@ -1,0 +1,24 @@
+import { createProof } from "proof-of-liabilities"
+import { GT } from "../index"
+import LiabilityProof from "../types/objects/liability-proof"
+import { getTree } from "../../app/"
+
+const ProofQuery = GT.Field({
+  type: LiabilityProof,
+  args: {
+    accountId: { type: GT.NonNull(GT.String) },
+    merkleRoot: { type: GT.NonNull(GT.String) },
+  },
+  resolve: async (_, { accountId, merkleRoot }) => {
+    const tree = await getTree(merkleRoot)
+    const proof = await createProof(accountId, tree)
+    return {
+      accountId,
+      partialLiabilityProofs: proof.partialLiabilityProofs,
+      totalBalance: proof.totalBalance,
+      nonce: proof.nonce,
+    }
+  },
+})
+
+export default ProofQuery
