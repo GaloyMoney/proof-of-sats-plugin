@@ -1,6 +1,7 @@
 import * as fs from "fs"
 import path from "path"
 import { LIABILITY_TREE_DIRECTORY } from "../../config"
+
 export const fileSystemLiabilityTreeRepository = (): ILiabilityTreeRepository => {
   const persistNew = async (
     tree: LiabilityTree,
@@ -18,6 +19,7 @@ export const fileSystemLiabilityTreeRepository = (): ILiabilityTreeRepository =>
     )
     return tree
   }
+
   const findLiabilityTree = async (name: string): Promise<LiabilityTree | Error> => {
     const fileName = `${name}.json`
     const filePath = path.join(LIABILITY_TREE_DIRECTORY, fileName)
@@ -28,6 +30,7 @@ export const fileSystemLiabilityTreeRepository = (): ILiabilityTreeRepository =>
       accountToNonceMap: new Map(result.accountToNonceMap),
     }
   }
+
   return {
     persistNew,
     findLiabilityTree,
