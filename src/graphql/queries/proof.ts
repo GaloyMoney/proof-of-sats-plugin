@@ -11,7 +11,9 @@ const ProofQuery = GT.Field({
   },
   resolve: async (_, { accountId, merkleRoot }) => {
     const tree = await getTree(merkleRoot)
+    if (tree instanceof Error) throw tree
     const proof = await createProof(accountId, tree)
+    if (proof instanceof Error) throw proof
     return {
       accountId,
       partialLiabilityProofs: proof.partialLiabilityProofs,

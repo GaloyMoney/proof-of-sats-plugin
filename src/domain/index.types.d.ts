@@ -7,6 +7,7 @@ type LiabilityProof = {
   accountId: string
   totalBalance: number
   partialLiabilityProofs: PartialLiabilityProofs
+  nonce: string
 }
 
 type PartialLiabilityProofs = {
