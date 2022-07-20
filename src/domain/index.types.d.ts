@@ -50,3 +50,8 @@ interface TreeMetadataRecord {
   totalBalance: number
   dateCreated: Date
 }
+
+type TreeMetadataArgs = {
+  roothash: string
+  totalBalance: number
+}

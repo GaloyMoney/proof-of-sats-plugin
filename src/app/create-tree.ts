@@ -8,10 +8,10 @@ export const createTree = async (): Promise<LiabilityTree | Error> => {
   if (accounts instanceof Error) return accounts
   const tree = await createLiabilitiesTree(accounts)
   if (tree instanceof Error) return tree
-  const treeMetadata = await createTreeMetadata(
-    tree.merkleTree[0][0].hash,
-    tree.merkleTree[0][0].sum,
-  )
+  const treeMetadata = await createTreeMetadata({
+    roothash: tree.merkleTree[0][0].hash,
+    totalBalance: tree.merkleTree[0][0].sum,
+  })
   if (treeMetadata instanceof Error) throw treeMetadata
   return await fileSystemLiabilityTreeRepository().persistNew(
     tree,

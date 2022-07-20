@@ -3,7 +3,7 @@ import { getTree } from "../src/app/index"
 describe("it test if a valid tree is being returned", () => {
   it("should return a tree", async () => {
     const tree = await getTree(
-      "8f596a092ca625f707d847fc5ab47dbb5b6c7a0737ccbedc3cc510e63825f619",
+      "ecb7bc9323689daca43fe2e9dbab42c9e489dc92257bcb951c489c5aaa638867",
     )
     if (tree instanceof Error) return tree
     expect(tree).toBeDefined()

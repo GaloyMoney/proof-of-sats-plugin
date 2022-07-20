@@ -29,7 +29,7 @@
     "@apollo/gateway": "^2.0.5",
     "@apollo/subgraph": "^2.0.5",
     "@types/mongoose": "^5.11.97",
-    "@types/node": "^18.0.0",
+    "@types/node": "^18.0.6",
     "apollo-server": "^3.9.0",
     "apollo-server-core": "^3.9.0",
     "dotenv": "^16.0.1",

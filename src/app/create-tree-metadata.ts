@@ -1,8 +1,10 @@
 import { TreeMetadataRepository } from "../services/mongoose/tree-metadata"
 
 export const createTreeMetadata = async (
-  roothash,
-  totalbalance,
+  treeMetadataArgs: TreeMetadataArgs,
 ): Promise<TreeMetadata | Error> => {
-  return await TreeMetadataRepository().persistNew(roothash, totalbalance)
+  return await TreeMetadataRepository().persistNew(
+    treeMetadataArgs.roothash,
+    treeMetadataArgs.totalBalance,
+  )
 }
