@@ -5,9 +5,9 @@ import { LIABILITY_TREE_DIRECTORY } from "../../config"
 export const fileSystemLiabilityTreeRepository = (): ILiabilityTreeRepository => {
   const persistNew = async (
     tree: LiabilityTree,
-    name: string,
+    roothash: string,
   ): Promise<LiabilityTree | Error> => {
-    const fileName = `${name}.json`
+    const fileName = `${roothash}.json`
     const filePath = path.join(LIABILITY_TREE_DIRECTORY, fileName)
     const jsonMerkleTree = JSON.stringify(tree.merkleTree)
     const jsonAccountToNonceMap = JSON.stringify(
