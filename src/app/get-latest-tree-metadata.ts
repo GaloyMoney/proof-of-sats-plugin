@@ -1,4 +1,4 @@
-import { TreeMetadataRepository } from "../services/mongoose/tree-metadata"
+import { TreeMetadataRepository } from "../services/TreeMetadataRepository/treeMetadataRepository"
 
 export const getLatestTreeMetadata = async (): Promise<TreeMetadata | Error> => {
   return TreeMetadataRepository().findLatestTreeMetadata()
