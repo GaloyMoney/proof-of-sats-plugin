@@ -1,4 +1,4 @@
-import { fileSystemLiabilityTreeRepository } from "../services/LiabilityTreeRepository/fileSystemLiabilityTreeRepository"
+import { LiabilityTreeRepository } from "../services/LiabilityTreeRepository/liabilityTreeRepository"
 import { createLiabilitiesTree } from "proof-of-liabilities"
 import { GaloyAccountService } from "../services/AccountService/galoy-account-service"
 import { createTreeMetadata } from "./create-tree-metadata"
@@ -13,8 +13,5 @@ export const createTree = async (): Promise<LiabilityTree | Error> => {
     totalBalance: tree.merkleTree[0][0].sum,
   })
   if (treeMetadata instanceof Error) throw treeMetadata
-  return await fileSystemLiabilityTreeRepository().persistNew(
-    tree,
-    tree.merkleTree[0][0].hash,
-  )
+  return await LiabilityTreeRepository().persistNew(tree, treeMetadata.roothash)
 }
