@@ -2,18 +2,14 @@ import { ApolloServer } from "apollo-server"
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core"
 import { GraphQLSchema } from "graphql"
 import { Query } from "./src/graphql/query"
-import dbconnnection from "./src/services/mongodb"
+import pool from "./src/services/postgresql"
 
 const schema = new GraphQLSchema({
   query: Query,
 })
 
-dbconnnection()
-  .then(async (mongoose) => {
-    await mongoose.connection.once("open", () => {
-      console.log(`Connected to Mongo!`)
-    })
-  })
+pool
+  .connect()
   .then(() => {
     const server = new ApolloServer({
       schema: schema,
@@ -27,4 +23,7 @@ dbconnnection()
       .catch((err) => {
         console.log(err)
       })
+  })
+  .catch((err) => {
+    console.log(err)
   })
