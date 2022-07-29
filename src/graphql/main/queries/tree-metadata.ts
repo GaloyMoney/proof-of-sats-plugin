@@ -1,6 +1,6 @@
-import { GT } from "../"
+import { GT } from "../.."
 import { TreeMetadata } from "../types/objects/tree-metadata"
-import { getLatestTreeMetadata } from "../../app/get-latest-tree-metadata"
+import { getLatestTreeMetadata } from "../../../app"
 
 const TreeMetadataQuery = GT.Field({
   type: TreeMetadata,

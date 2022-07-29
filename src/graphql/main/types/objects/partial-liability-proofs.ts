@@ -1,4 +1,4 @@
-import { GT } from "../../index"
+import { GT } from "../../.."
 import { MerklePath } from "./merkle-path"
 
 export const PartialLiabilityProofs = GT.Object<PartialLiabilityProofs>({

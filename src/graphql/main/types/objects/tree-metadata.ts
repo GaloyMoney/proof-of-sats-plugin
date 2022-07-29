@@ -1,4 +1,4 @@
-import { GT } from "../../index"
+import { GT } from "../../.."
 
 export const TreeMetadata = GT.Object<TreeMetadata>({
   name: "TreeMetadata",
