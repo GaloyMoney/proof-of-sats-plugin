@@ -1,5 +1,6 @@
-import { LiabilityTreeRepository } from "../services/LiabilityTreeRepository/liabilityTreeRepository"
+export * from "./create-tree"
+export * from "./get-latest-tree-metadata"
 
-export const getTree = async (roothash: string): Promise<LiabilityTree | Error> => {
-  return await LiabilityTreeRepository().findLiabilityTree(roothash)
-}
+import { LiabilityTreeRepository } from "../services/postgresql"
+export const getTree = async (roothash: string): Promise<LiabilityTree | Error> =>
+  LiabilityTreeRepository().findLiabilityTree(roothash)
