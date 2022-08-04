@@ -1,11 +1,11 @@
-import { CouldNotFindError, UnknownRepositoryError } from "../../domain/error"
+import { CouldNotFindTreeError, CouldNotPersistTreeError } from "../../domain/error"
 import { pool } from "./postgres-config"
 
 export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
   const persistNew = async (
     tree: LiabilityTree,
     roothash: string,
-  ): Promise<LiabilityTree | Error> => {
+  ): Promise<LiabilityTree | CouldNotPersistTreeError> => {
     try {
       const jsonMerkleTree = JSON.stringify(tree.merkleTree)
       const jsonAccountToNonceMap = JSON.stringify(
@@ -20,10 +20,12 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
         accountToNonceMap: new Map(result.rows[0].account_to_nonce_map),
       }
     } catch (err) {
-      return new UnknownRepositoryError(err)
+      return new CouldNotPersistTreeError(err)
     }
   }
-  const findLiabilityTree = async (roothash: string): Promise<LiabilityTree | Error> => {
+  const findLiabilityTree = async (
+    roothash: string,
+  ): Promise<LiabilityTree | CouldNotFindTreeError> => {
     try {
       const query = "SELECT * FROM liability_tree WHERE roothash = $1"
       const values = [roothash]
@@ -36,7 +38,7 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
         accountToNonceMap: new Map(result.rows[0].account_to_nonce_map),
       }
     } catch (err) {
-      return new CouldNotFindError(err)
+      return new CouldNotFindTreeError(err)
     }
   }
 

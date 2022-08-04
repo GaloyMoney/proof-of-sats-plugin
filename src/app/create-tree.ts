@@ -2,8 +2,9 @@
 import { LiabilityTreeRepository, TreeMetadataRepository } from "../services/postgresql"
 import { createLiabilitiesTree } from "proof-of-liabilities"
 import { GaloyAccountService } from "../services/AccountService"
+import { CouldNotPersistTreeError } from "../domain/error"
 
-export const createTree = async (): Promise<LiabilityTree | Error> => {
+export const createTree = async (): Promise<LiabilityTree | CouldNotPersistTreeError> => {
   const accounts = await GaloyAccountService().fetchAccounts()
   if (accounts instanceof Error) return accounts
   const tree = await createLiabilitiesTree(accounts)

@@ -1,6 +1,5 @@
 import { GALOY_GRAPHQL_ENDPOINT } from "../../config/index"
 import fetch from "node-fetch"
-import { gql } from "apollo-server"
 
 const headers = {
   "Content-Type": "application/json",
@@ -8,7 +7,7 @@ const headers = {
 }
 
 const getAccountIds = async () => {
-  const query = gql`
+  const query = `
     query listWalletIds {
       listWalletIds(walletCurrency: BTC)
     }
@@ -32,7 +31,7 @@ export const GaloyAccountService = (): IAccountService => {
       const accounts: Account[] = []
       const accountIds = await getAccountIds()
       for (const id of accountIds) {
-        const query = gql`query wallet{
+        const query = `query wallet{
           wallet(walletId: "${id}"){
             id
             balance

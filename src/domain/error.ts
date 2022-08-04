@@ -10,3 +10,7 @@ export class RepositoryError extends DomainError {}
 export class UnknownRepositoryError extends RepositoryError {}
 export class CouldNotFindError extends RepositoryError {}
 export class PersistError extends RepositoryError {}
+export class CouldNotFindTreeError extends CouldNotFindError {}
+export class CouldNotPersistTreeError extends PersistError {}
+export class CouldNotPersistTreeMetadataError extends PersistError {}
+export class CouldNotFindTreeMetadataError extends CouldNotFindError {}
