@@ -1,20 +1,18 @@
-import { fileSystemLiabilityTreeRepository } from "../services/LiabilityTreeRepository/fileSystemLiabilityTreeRepository"
+// Note : This has to be cron job
+import { LiabilityTreeRepository, TreeMetadataRepository } from "../services/postgresql"
 import { createLiabilitiesTree } from "proof-of-liabilities"
-import { GaloyAccountService } from "../services/AccountService/galoy-account-service"
-import { createTreeMetadata } from "./create-tree-metadata"
+import { GaloyAccountService } from "../services/AccountService"
+import { CouldNotPersistTreeError } from "../domain/error"
 
-export const createTree = async (): Promise<LiabilityTree | Error> => {
+export const createTree = async (): Promise<LiabilityTree | CouldNotPersistTreeError> => {
   const accounts = await GaloyAccountService().fetchAccounts()
   if (accounts instanceof Error) return accounts
   const tree = await createLiabilitiesTree(accounts)
   if (tree instanceof Error) return tree
-  const treeMetadata = await createTreeMetadata({
+  const treeMetadata = await TreeMetadataRepository().persistNew({
     roothash: tree.merkleTree[0][0].hash,
     totalBalance: tree.merkleTree[0][0].sum,
   })
   if (treeMetadata instanceof Error) throw treeMetadata
-  return await fileSystemLiabilityTreeRepository().persistNew(
-    tree,
-    tree.merkleTree[0][0].hash,
-  )
+  return LiabilityTreeRepository().persistNew(tree, treeMetadata.roothash)
 }

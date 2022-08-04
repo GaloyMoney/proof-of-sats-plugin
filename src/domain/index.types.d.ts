@@ -1,6 +1,7 @@
+// TODO : Change the name to LiabilityAccount and liabilityAccountId
 type Account = {
-  accountId: string
-  balance: number
+  readonly accountId: string
+  readonly balance: number
 }
 
 type LiabilityProof = {
@@ -41,17 +42,16 @@ type TreeMetadata = {
   dateCreated: string
 }
 interface ITreeMetadataRepository {
-  persistNew: (roothash: string, totalBalance: number) => Promise<TreeMetadata | Error>
+  persistNew: (treeMetadataArgs: TreeMetadataArgs) => Promise<TreeMetadata | Error>
   findLatestTreeMetadata: () => Promise<TreeMetadata | Error>
-}
-
-interface TreeMetadataRecord {
-  roothash: string
-  totalBalance: number
-  dateCreated: Date
 }
 
 type TreeMetadataArgs = {
   roothash: string
   totalBalance: number
+}
+
+interface ILiabilityTreeRepository {
+  persistNew: (tree: LiabilityTree, roothash: string) => Promise<LiabilityTree | Error>
+  findLiabilityTree: (roothash: string) => Promise<LiabilityTree | Error>
 }

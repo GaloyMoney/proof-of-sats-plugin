@@ -1,5 +1,9 @@
-import { fileSystemLiabilityTreeRepository } from "../services/LiabilityTreeRepository/fileSystemLiabilityTreeRepository"
+export * from "./create-tree"
+export * from "./get-latest-tree-metadata"
 
-export const getTree = async (merkleRoot: string): Promise<LiabilityTree | Error> => {
-  return await fileSystemLiabilityTreeRepository().findLiabilityTree(merkleRoot)
-}
+import { CouldNotFindTreeError } from "../domain/error"
+import { LiabilityTreeRepository } from "../services/postgresql"
+export const getTree = async (
+  roothash: string,
+): Promise<LiabilityTree | CouldNotFindTreeError> =>
+  LiabilityTreeRepository().findLiabilityTree(roothash)
