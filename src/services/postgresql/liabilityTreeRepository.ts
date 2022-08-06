@@ -5,8 +5,9 @@ import {
   UnknownRepositoryError,
 } from "../../domain/error"
 import { pool } from "./postgres-config"
+import LRUCache from "../../utils/lru_cache"
 
-const LiabilityTreeCache = new Map<string, LiabilityTree>()
+const LiabilityTreeCache = new LRUCache<LiabilityTree>()
 export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
   const persistNew = async (
     tree: LiabilityTree,
@@ -33,8 +34,8 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
     roothash: string,
   ): Promise<LiabilityTree | CouldNotFindTreeError> => {
     try {
-      if (LiabilityTreeCache.has(roothash)) {
-        return LiabilityTreeCache.get(roothash)!
+      if (LiabilityTreeCache.get(roothash) != null) {
+        LiabilityTreeCache.get(roothash)
       }
       const query = "SELECT * FROM liability_tree WHERE roothash = $1"
       const values = [roothash]
@@ -46,7 +47,7 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
         merkleTree: result.rows[0].merkle_tree,
         accountToNonceMap: new Map(result.rows[0].account_to_nonce_map),
       }
-      LiabilityTreeCache.set(liabilityTree.merkleTree[0][0].hash, liabilityTree)
+      LiabilityTreeCache.put(roothash, liabilityTree)
       return liabilityTree
     } catch (err) {
       return new UnknownRepositoryError(err)
