@@ -1,5 +1,5 @@
 /* eslint-disable  @typescript-eslint/no-non-null-assertion */
-class LRUCache<T> {
+export class LRUCache<T> {
   private map: Map<string, T> = new Map<string, T>()
   private size = 10
   public get(key: string) {
@@ -19,4 +19,3 @@ class LRUCache<T> {
     this.map.set(key, value)
   }
 }
-export default LRUCache

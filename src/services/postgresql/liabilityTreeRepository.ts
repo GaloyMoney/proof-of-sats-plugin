@@ -5,7 +5,7 @@ import {
   UnknownRepositoryError,
 } from "../../domain/error"
 import { pool } from "./postgres-config"
-import LRUCache from "../../utils/lru_cache"
+import { LRUCache } from "../../utils"
 
 const LiabilityTreeCache = new LRUCache<LiabilityTree>()
 export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
