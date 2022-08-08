@@ -7,7 +7,7 @@ import {
 import { pool } from "./postgres-config"
 import { LRUCache } from "../../utils"
 
-const LiabilityTreeCache = new LRUCache<LiabilityTree>()
+const LiabilityTreeCache = new LRUCache<LiabilityTree>(10)
 export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
   const persistNew = async (
     tree: LiabilityTree,
@@ -35,7 +35,7 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
   ): Promise<LiabilityTree | CouldNotFindTreeError> => {
     try {
       if (LiabilityTreeCache.get(roothash) != null) {
-        LiabilityTreeCache.get(roothash)
+        return LiabilityTreeCache.get(roothash)!
       }
       const query = "SELECT * FROM liability_tree WHERE roothash = $1"
       const values = [roothash]

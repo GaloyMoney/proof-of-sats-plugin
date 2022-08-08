@@ -1,7 +1,10 @@
 /* eslint-disable  @typescript-eslint/no-non-null-assertion */
 export class LRUCache<T> {
   private map: Map<string, T> = new Map<string, T>()
-  private size = 10
+  private maxSize: number
+  constructor(maxSize: number) {
+    this.maxSize = maxSize
+  }
   public get(key: string) {
     const hasKey = this.map.has(key)
     let value: T | undefined
@@ -13,7 +16,7 @@ export class LRUCache<T> {
     return value ? value : null
   }
   public put(key: string, value: T) {
-    if (this.map.size >= this.size) {
+    if (this.map.size > this.maxSize) {
       this.map.delete(this.map.keys().next().value)
     }
     this.map.set(key, value)
