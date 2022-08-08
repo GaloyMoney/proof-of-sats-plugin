@@ -1,6 +1,13 @@
-import { CouldNotFindTreeError, CouldNotPersistTreeError } from "../../domain/error"
+/* eslint-disable  @typescript-eslint/no-non-null-assertion */
+import {
+  CouldNotFindTreeError,
+  CouldNotPersistTreeError,
+  UnknownRepositoryError,
+} from "../../domain/error"
 import { pool } from "./postgres-config"
+import { LRUCache } from "../../utils"
 
+const LiabilityTreeCache = new LRUCache<LiabilityTree>(10)
 export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
   const persistNew = async (
     tree: LiabilityTree,
@@ -27,18 +34,23 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
     roothash: string,
   ): Promise<LiabilityTree | CouldNotFindTreeError> => {
     try {
+      if (LiabilityTreeCache.get(roothash) != null) {
+        return LiabilityTreeCache.get(roothash)!
+      }
       const query = "SELECT * FROM liability_tree WHERE roothash = $1"
       const values = [roothash]
       const result = await pool.query(query, values)
       if (result.rows.length === 0) {
-        return new Error("Liability tree not found")
+        return new CouldNotFindTreeError("Liability tree not found")
       }
-      return {
+      const liabilityTree: LiabilityTree = {
         merkleTree: result.rows[0].merkle_tree,
         accountToNonceMap: new Map(result.rows[0].account_to_nonce_map),
       }
+      LiabilityTreeCache.put(roothash, liabilityTree)
+      return liabilityTree
     } catch (err) {
-      return new CouldNotFindTreeError(err)
+      return new UnknownRepositoryError(err)
     }
   }
 
