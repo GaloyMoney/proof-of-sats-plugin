@@ -1,13 +1,16 @@
 /* eslint-disable  @typescript-eslint/no-non-null-assertion */
+
 import {
   CouldNotFindTreeError,
   CouldNotPersistTreeError,
   UnknownRepositoryError,
 } from "../../domain/error"
-import { pool } from "./postgres-config"
+
+import { queryBuilder } from "./query-builder"
 import { LRUCache } from "../../utils"
 
 const LiabilityTreeCache = new LRUCache<LiabilityTree>(10)
+
 export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
   const persistNew = async (
     tree: LiabilityTree,
@@ -18,13 +21,16 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
       const jsonAccountToNonceMap = JSON.stringify(
         Array.from(tree.accountToNonceMap.entries()),
       )
-      const query =
-        "INSERT INTO liability_tree (roothash, merkle_tree, account_to_nonce_map) VALUES ($1, $2, $3) RETURNING *"
-      const values = [roothash, jsonMerkleTree, jsonAccountToNonceMap]
-      const result = await pool.query(query, values)
+      const result = await queryBuilder("liability_tree")
+        .insert({
+          roothash,
+          merkle_tree: jsonMerkleTree,
+          account_to_nonce_map: jsonAccountToNonceMap,
+        })
+        .returning(["merkle_tree", "account_to_nonce_map"])
       return {
-        merkleTree: result.rows[0].merkle_tree,
-        accountToNonceMap: new Map(result.rows[0].account_to_nonce_map),
+        merkleTree: result[0].merkle_tree,
+        accountToNonceMap: new Map(result[0].account_to_nonce_map),
       }
     } catch (err) {
       return new CouldNotPersistTreeError(err)
@@ -37,15 +43,16 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
       if (LiabilityTreeCache.get(roothash) != null) {
         return LiabilityTreeCache.get(roothash)!
       }
-      const query = "SELECT * FROM liability_tree WHERE roothash = $1"
-      const values = [roothash]
-      const result = await pool.query(query, values)
-      if (result.rows.length === 0) {
+      const result = await queryBuilder("liability_tree")
+        .select("*")
+        .where({ roothash })
+        .first()
+      if (result == null) {
         return new CouldNotFindTreeError("Liability tree not found")
       }
       const liabilityTree: LiabilityTree = {
-        merkleTree: result.rows[0].merkle_tree,
-        accountToNonceMap: new Map(result.rows[0].account_to_nonce_map),
+        merkleTree: result.merkle_tree,
+        accountToNonceMap: new Map(result.account_to_nonce_map),
       }
       LiabilityTreeCache.put(roothash, liabilityTree)
       return liabilityTree
@@ -53,7 +60,6 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
       return new UnknownRepositoryError(err)
     }
   }
-
   return {
     persistNew,
     findLiabilityTree,

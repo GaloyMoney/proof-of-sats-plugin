@@ -10,7 +10,13 @@
     "eslint-check": "eslint \"{src,test}/**/*.ts\"",
     "eslint-fix": "eslint \"{src,test}/**/*.ts\" --fix",
     "prettier-check": "prettier --check .",
-    "prettier-write": "prettier --write ."
+    "prettier-write": "prettier --write .",
+    "db:status": "knex --knexfile ./src/config/database.ts migrate:status",
+    "db:create": "knex --knexfile ./src/config/database.ts migrate:make -x ts",
+    "db:migrate": "knex --knexfile ./src/config/database.ts migrate:latest",
+    "db:rollback": "knex --knexfile ./src/config/database.ts migrate:rollback",
+    "db:create:seed": "knex --knexfile ./src/config/database.ts seed:make -x ts",
+    "db:seed": "knex --knexfile ./src/config/database.ts seed:run"
   },
   "repository": {
     "type": "git",
@@ -34,6 +40,7 @@
     "apollo-server-core": "^3.9.0",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
+    "knex": "^2.2.0",
     "pg": "^8.7.3",
     "proof-of-liabilities": "../proof-of-liabilities/",
     "ts-node": "^10.8.1",

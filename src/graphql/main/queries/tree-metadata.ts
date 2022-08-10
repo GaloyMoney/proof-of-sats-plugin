@@ -10,7 +10,7 @@ const TreeMetadataQuery = GT.Field({
     return {
       roothash: treeMetadata.roothash,
       totalBalance: treeMetadata.totalBalance,
-      dateCreated: new Date(treeMetadata.dateCreated).toISOString(),
+      dateCreated: treeMetadata.dateCreated,
     }
   },
 })
