@@ -9,7 +9,7 @@ import {
 import { queryBuilder } from "./query-builder"
 import { LRUCache } from "../../utils"
 
-const LiabilityTreeCache = new LRUCache<LiabilityTree>(10)
+const LiabilityTreeCache = LRUCache<LiabilityTree>(10)
 
 export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
   const persistNew = async (
@@ -40,7 +40,7 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
     roothash: string,
   ): Promise<LiabilityTree | CouldNotFindTreeError> => {
     try {
-      if (LiabilityTreeCache.get(roothash) != null) {
+      if (LiabilityTreeCache.get(roothash)) {
         return LiabilityTreeCache.get(roothash)!
       }
       const result = await queryBuilder("liability_tree")
@@ -55,6 +55,7 @@ export const LiabilityTreeRepository = (): ILiabilityTreeRepository => {
         accountToNonceMap: new Map(result.account_to_nonce_map),
       }
       LiabilityTreeCache.put(roothash, liabilityTree)
+
       return liabilityTree
     } catch (err) {
       return new UnknownRepositoryError(err)
