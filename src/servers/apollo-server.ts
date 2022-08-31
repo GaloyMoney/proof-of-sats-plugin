@@ -9,7 +9,7 @@ const server = new ApolloServer({
 server
   .listen(4004)
   .then(({ url }) => {
-    console.log(`🚀  Server ready at ${url}`)
+    console.log(`Proof of Liabilities Server running at ${url}`)
   })
   .catch((err) => {
     console.log(err)
