@@ -1,4 +1,5 @@
 import { createProof } from "proof-of-liabilities"
+
 import { GT } from "../.."
 import LiabilityProof from "../types/objects/liability-proof"
 import { getTree } from "../../../app"

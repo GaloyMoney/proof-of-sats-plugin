@@ -1,6 +1,7 @@
 // Note : This has to be cron job
-import { LiabilityTreeRepository, TreeMetadataRepository } from "../services/postgresql"
 import { createLiabilitiesTree } from "proof-of-liabilities"
+
+import { LiabilityTreeRepository, TreeMetadataRepository } from "../services/postgresql"
 import { GaloyAccountService } from "../services/AccountService"
 import { CouldNotPersistTreeError } from "../domain/error"
 

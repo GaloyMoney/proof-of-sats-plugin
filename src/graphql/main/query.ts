@@ -1,4 +1,5 @@
 import { GT } from ".."
+
 import ProofQuery from "./queries/proof"
 import TreeMetadataQuery from "./queries/tree-metadata"
 

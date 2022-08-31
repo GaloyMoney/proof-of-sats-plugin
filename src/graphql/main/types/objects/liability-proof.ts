@@ -1,4 +1,5 @@
 import { GT } from "../../.."
+
 import { PartialLiabilityProofs } from "./partial-liability-proofs"
 const LiabilityProof = GT.Object<LiabilityProof>({
   name: "LiabilityProof",

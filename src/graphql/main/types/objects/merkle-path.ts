@@ -1,4 +1,5 @@
 import { GT } from "../../.."
+
 import { TreeNode } from "./tree-node"
 
 export const MerklePath = GT.Object<MerklePath>({

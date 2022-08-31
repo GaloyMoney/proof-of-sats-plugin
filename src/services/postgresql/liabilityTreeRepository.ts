@@ -6,8 +6,9 @@ import {
   UnknownRepositoryError,
 } from "../../domain/error"
 
-import { queryBuilder } from "./query-builder"
 import { LRUCache } from "../../utils"
+
+import { queryBuilder } from "./query-builder"
 
 const LiabilityTreeCache = LRUCache<LiabilityTree>(10)
 

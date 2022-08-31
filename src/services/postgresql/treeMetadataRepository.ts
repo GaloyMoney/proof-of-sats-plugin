@@ -2,6 +2,7 @@ import {
   CouldNotPersistTreeMetadataError,
   CouldNotFindTreeMetadataError,
 } from "../../domain/error"
+
 import { queryBuilder } from "./query-builder"
 
 export const TreeMetadataRepository = (): ITreeMetadataRepository => {
