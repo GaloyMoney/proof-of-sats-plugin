@@ -1,4 +1,5 @@
 import { Knex } from "knex"
+
 import { databaseConfig } from "./process"
 
 const { host, port, user, password, database, poolMin, poolMax } = databaseConfig

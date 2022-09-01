@@ -1,6 +1,4 @@
 import { GALOY_GRAPHQL_ENDPOINT } from "../../config/index"
-import fetch from "node-fetch"
-
 const headers = {
   "Content-Type": "application/json",
   "Accept": "application/json",
@@ -19,7 +17,7 @@ const getAccountIds = async () => {
       body: JSON.stringify({ query }),
     })
     const result = await response.json()
-    return result.data.listWalletIds
+    return result?.data?.listWalletIds
   } catch (err) {
     return err
   }
