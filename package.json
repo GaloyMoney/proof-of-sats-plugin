@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --no-cache --runInBand",
     "start": "yarn tsnd --respawn --files src/servers/apollo-server.ts",
-    "build": "yarn tsnd --respawn --files index.ts",
+    "build": "yarn install && rm -rf dist && tsc --sourceMap false --skipLibCheck true",
     "eslint-check": "eslint \"{src,test}/**/*.ts\"",
     "eslint-fix": "eslint \"{src,test}/**/*.ts\" --fix",
     "prettier-check": "prettier --check .",
