@@ -34,20 +34,18 @@
   "dependencies": {
     "@apollo/gateway": "^2.0.5",
     "@apollo/subgraph": "^2.0.5",
-    "@types/node": "^18.0.6",
-    "@types/pg": "^8.6.5",
     "apollo-server": "^3.9.0",
     "apollo-server-core": "^3.9.0",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
     "knex": "^2.2.0",
     "pg": "^8.7.3",
-    "proof-of-liabilities": "../proof-of-liabilities/",
-    "ts-node": "^10.8.1",
-    "typescript": "^4.7.3"
+    "proof-of-liabilities": "../proof-of-liabilities/"
   },
   "devDependencies": {
     "@types/jest": "^28.1.3",
+    "@types/node": "^18.7.14",
+    "@types/pg": "^8.6.5",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "eslint": "^8.17.0",
@@ -57,7 +55,9 @@
     "jest": "^28.1.1",
     "prettier": "^2.7.1",
     "ts-jest": "^28.0.5",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.2",
     "yarn": "^1.22.19"
   }
 }
