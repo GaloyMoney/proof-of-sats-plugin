@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server"
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core"
 
-import { GQLSchema as schema } from "../graphql/index"
+import { GQLSchema as schema } from "@graphql/index"
 
 const server = new ApolloServer({
   schema: schema,

@@ -1,5 +1,6 @@
-import { CouldNotFindTreeMetadataError } from "../domain/error"
-import { TreeMetadataRepository } from "../services/postgresql"
+import { CouldNotFindTreeMetadataError } from "@domain/error"
+
+import { TreeMetadataRepository } from "@services/postgresql"
 
 export const getLatestTreeMetadata = async (): Promise<
   TreeMetadata | CouldNotFindTreeMetadataError

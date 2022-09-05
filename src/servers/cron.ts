@@ -1,7 +1,8 @@
 // referenced from galoy price repo
 
-import { closeDbConnection } from "../services"
-import { createTree } from "../app"
+import { createTree } from "@app"
+
+import { closeDbConnection } from "@services"
 
 const startServer = async () => {
   await createTree()

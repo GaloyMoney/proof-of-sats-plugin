@@ -4,7 +4,7 @@ import {
   CouldNotFindTreeError,
   CouldNotPersistTreeError,
   UnknownRepositoryError,
-} from "../../domain/error"
+} from "@domain/error"
 
 import { LRUCache } from "../../utils"
 

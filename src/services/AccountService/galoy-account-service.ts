@@ -1,4 +1,4 @@
-import { GALOY_GRAPHQL_ENDPOINT } from "../../config/index"
+import { GALOY_GRAPHQL_ENDPOINT } from "@config/index"
 const headers = {
   "Content-Type": "application/json",
   "Accept": "application/json",
