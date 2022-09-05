@@ -19,7 +19,8 @@
       "@servers/*": ["src/servers/*"],
       "@graphql/*": ["src/graphql/*"],
       "@services/*": ["src/services/*"],
-      "@services": ["src/services/index.ts"]
+      "@services": ["src/services/index.ts"],
+      "@utils": ["src/utils/index"]
     }
   },
   "compileOnSave": true,

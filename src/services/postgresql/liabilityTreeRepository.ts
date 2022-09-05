@@ -6,7 +6,7 @@ import {
   UnknownRepositoryError,
 } from "@domain/error"
 
-import { LRUCache } from "../../utils"
+import { LRUCache } from "@utils"
 
 import { queryBuilder } from "./query-builder"
 
