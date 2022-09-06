@@ -2,7 +2,7 @@ FROM node:16-apline AS BUILD_IMAGE
 
 WORKDIR /app
 
-RUN apk update && apk add git 
+RUN apk update 
 
 COPY ./*.json ./yarn.lock ./
 
@@ -20,7 +20,7 @@ COPY --from=BUILD_IMAGE /app/node_modules /app/node_modules
 
 WORKDIR /app
 
-COPY ./*js ./package.json ./tsconfig.json ./yarn.lock ./
+COPY ./*js ./package.json ./yarn.lock ./
 
 USER 1000
 
