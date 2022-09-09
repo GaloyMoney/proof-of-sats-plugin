@@ -1,8 +1,9 @@
 import { createProof } from "proof-of-liabilities"
 
-import { GT } from "../.."
+import { getTree } from "@app"
+import { GT } from "@graphql/index"
+
 import LiabilityProof from "../types/objects/liability-proof"
-import { getTree } from "../../../app"
 
 const ProofQuery = GT.Field({
   type: LiabilityProof,

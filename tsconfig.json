@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "Node16",
     "outDir": "dist",
     "sourceMap": true,
     "strict": true,
@@ -9,8 +9,20 @@
     "useUnknownInCatchVariables": false,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@app": ["src/app/index.ts"],
+      "@config/*": ["src/config/*"],
+      "@domain/*": ["src/domain/*"],
+      "@servers/*": ["src/servers/*"],
+      "@graphql/*": ["src/graphql/*"],
+      "@services/*": ["src/services/*"],
+      "@services": ["src/services/index.ts"],
+      "@utils": ["src/utils/index"]
+    }
   },
   "compileOnSave": true,
-  "include": ["src/**/*", "test/**/*"]
+  "include": ["src/**/*"]
 }

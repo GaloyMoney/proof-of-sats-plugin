@@ -1,9 +1,8 @@
 // Note : This has to be cron job
 import { createLiabilitiesTree } from "proof-of-liabilities"
-
-import { LiabilityTreeRepository, TreeMetadataRepository } from "../services/postgresql"
-import { GaloyAccountService } from "../services/AccountService"
-import { CouldNotPersistTreeError } from "../domain/error"
+import { LiabilityTreeRepository, TreeMetadataRepository } from "@services/postgresql"
+import { GaloyAccountService } from "@services/AccountService"
+import { CouldNotPersistTreeError } from "@domain/error"
 
 export const createTree = async (): Promise<LiabilityTree | CouldNotPersistTreeError> => {
   const accounts = await GaloyAccountService().fetchAccounts()

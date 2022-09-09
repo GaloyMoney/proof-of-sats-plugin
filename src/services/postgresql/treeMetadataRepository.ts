@@ -1,7 +1,7 @@
 import {
   CouldNotPersistTreeMetadataError,
   CouldNotFindTreeMetadataError,
-} from "../../domain/error"
+} from "@domain/error"
 
 import { queryBuilder } from "./query-builder"
 
