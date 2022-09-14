@@ -1,4 +1,4 @@
-import { createProof } from "proof-of-liabilities"
+import { createProof } from "@galoymoney/proof-of-sats"
 
 import { getTree } from "@app"
 import { GT } from "@graphql/index"

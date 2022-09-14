@@ -1,5 +1,5 @@
 // Note : This has to be cron job
-import { createLiabilitiesTree } from "proof-of-liabilities"
+import { createLiabilitiesTree } from "@galoymoney/proof-of-sats"
 import { LiabilityTreeRepository, TreeMetadataRepository } from "@services/postgresql"
 import { GaloyAccountService } from "@services/AccountService"
 import { CouldNotPersistTreeError } from "@domain/error"
