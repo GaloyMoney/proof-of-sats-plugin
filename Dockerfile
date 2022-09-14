@@ -1,4 +1,4 @@
-FROM node:16-apline AS BUILD_IMAGE
+FROM node:16-alpine AS BUILD_IMAGE
 
 WORKDIR /app
 
