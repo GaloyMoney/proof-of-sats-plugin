@@ -36,13 +36,13 @@
   "dependencies": {
     "@apollo/gateway": "^2.0.5",
     "@apollo/subgraph": "^2.0.5",
+    "@galoymoney/proof-of-sats": "^0.1.0",
     "apollo-server": "^3.9.0",
     "apollo-server-core": "^3.9.0",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
     "knex": "^2.2.0",
-    "pg": "^8.7.3",
-    "proof-of-liabilities": "../proof-of-liabilities/"
+    "pg": "^8.7.3"
   },
   "devDependencies": {
     "@types/jest": "^28.1.3",
