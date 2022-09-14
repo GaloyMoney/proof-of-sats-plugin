@@ -13,4 +13,4 @@ jobs:
       - uses: actions/setup-node@v2
       - run: yarn install
       - name: Run check code
-        run: yarn eslint-check
+        run: yarn check:code
