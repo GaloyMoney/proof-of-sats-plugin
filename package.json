@@ -7,7 +7,7 @@
     "test": "jest --no-cache --runInBand",
     "code:check": "yarn tsc:check && yarn eslint:check && yarn prettier:check",
     "start": "yarn tsnd --respawn --files -r tsconfig-paths/register src/servers/apollo-server.ts",
-    "build": "yarn install && rm -rf dist && tsc --sourceMap false --skipLibCheck true",
+    "build": "tsc -p tsconfig-build.json --skipLibCheck && tscpaths -p tsconfig.json -s ./src -o ./dist",
     "eslint:check": "eslint \"{src,test}/**/*.ts\"",
     "eslint:fix": "eslint \"{src,test}/**/*.ts\" --fix",
     "tsc:check": "tsc --noEmit -p tsconfig.d.json && tsc --noEmit --skipLibCheck",
@@ -59,6 +59,7 @@
     "ts-jest": "^28.0.5",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
+    "tscpaths": "^0.0.9",
     "typescript": "^4.7.4",
     "yarn": "^1.22.19"
   }
