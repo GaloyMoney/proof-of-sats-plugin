@@ -13,13 +13,13 @@
     "baseUrl": ".",
     "paths": {
       "@app/*": ["src/app/*"],
-      "@app": ["src/app/index.ts"],
+      "@app": ["src/app/index"],
       "@config/*": ["src/config/*"],
       "@domain/*": ["src/domain/*"],
       "@servers/*": ["src/servers/*"],
       "@graphql/*": ["src/graphql/*"],
       "@services/*": ["src/services/*"],
-      "@services": ["src/services/index.ts"],
+      "@services": ["src/services/index"],
       "@utils": ["src/utils/index"]
     }
   },
