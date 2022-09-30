@@ -14,7 +14,10 @@ const ProofQuery = GT.Field({
   resolve: async (_, { accountId, roothash }) => {
     const tree = await getTree(roothash)
     if (tree instanceof Error) throw tree
-    const proof = await createProof(accountId, tree)
+    const proof = await createProof({
+      accountId,
+      tree,
+    })
     if (proof instanceof Error) throw proof
     return {
       accountId,

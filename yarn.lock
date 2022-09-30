@@ -484,10 +484,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@galoymoney/proof-of-sats@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@galoymoney/proof-of-sats/-/proof-of-sats-0.1.0.tgz#d7679a2e3b116d6081779ad9701a68e20d2caaac"
-  integrity sha512-+UWNjtedrabBFOta5ZXBbfwjWIevZqvVE1BO3WHRVkj87c1UcjaD6FTjpaqNdWo4g8IrpgrBMBMHBWeWnRY67Q==
+"@galoymoney/proof-of-sats@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@galoymoney/proof-of-sats/-/proof-of-sats-0.1.8.tgz#ac21341f9f71298d388e8132a0466f4ca1354964"
+  integrity sha512-zE49jl+QOd+/2x2nHc6fOkUnCypM1e3PgbttUerI9eNJTXSymYHLelJDpIPP260K45vp4e/Z4z4dwYB/gI00MQ==
 
 "@gar/promisify@^1.1.3":
   version "1.1.3"
