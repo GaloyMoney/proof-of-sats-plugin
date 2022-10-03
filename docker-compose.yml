@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:14.1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: galoy-proof-of-sats-usr
+      POSTGRES_PASSWORD: galoy-proof-of-sats-pwd
+      POSTGRES_DB: galoy-proof-of-sats
+    restart: always
+  postgres-migrate:
+    depends_on: [ postgres ]
+    build:
+      context: .
+      dockerfile: Dockerfile-migrate
