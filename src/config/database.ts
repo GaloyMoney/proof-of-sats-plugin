@@ -23,6 +23,6 @@ const config: Knex.Config = {
   },
   seeds: {
     directory: "./database/seeds",
-  }
+  },
 }
 export default config
