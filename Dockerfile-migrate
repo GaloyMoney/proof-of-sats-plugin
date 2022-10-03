@@ -1,0 +1,12 @@
+FROM node:16-alpine
+
+WORKDIR /app
+COPY ./src/config/process.ts ./src/config/database.ts ./
+COPY ./src/config/database ./database
+COPY ./scripts ./scripts
+
+RUN yarn add knex@2.2.0 pg@8.7.3 typescript@4.7.4 ts-node@10.9.1 @types/node@18.7.14
+
+USER 1000
+
+ENTRYPOINT ["scripts/migrate.sh"]
