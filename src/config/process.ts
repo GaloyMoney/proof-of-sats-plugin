@@ -1,5 +1,5 @@
 export const databaseConfig = {
-  host: process.env.DB_HOST || "localhost",
+  host: process.env.DB_HOST || "postgres",
   port: parseInt(process.env.DB_PORT || "", 10) || 5432,
   user: process.env.DB_USER || "galoy-proof-of-sats-usr",
   password: process.env.DB_PWD || "galoy-proof-of-sats-pwd",
