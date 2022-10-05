@@ -9,9 +9,14 @@ services:
       POSTGRES_USER: galoy-proof-of-sats-usr
       POSTGRES_PASSWORD: galoy-proof-of-sats-pwd
       POSTGRES_DB: galoy-proof-of-sats
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - db-data:/var/lib/postgresql/data
     restart: always
   postgres-migrate:
     depends_on: [ postgres ]
     build:
       context: .
       dockerfile: Dockerfile-migrate
+volumes:
+  db-data:
