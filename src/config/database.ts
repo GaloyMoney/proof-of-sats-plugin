@@ -21,5 +21,8 @@ const config: Knex.Config = {
     tableName: "knex_migrations",
     directory: "./database/migrations",
   },
+  seeds: {
+    directory: "./database/seeds",
+  },
 }
 export default config
