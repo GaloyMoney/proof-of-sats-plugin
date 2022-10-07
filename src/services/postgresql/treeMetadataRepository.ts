@@ -13,8 +13,9 @@ export const TreeMetadataRepository = (): ITreeMetadataRepository => {
       .select("*")
       .orderBy("date_created", "desc")
       .first()
+    const totalBalance = parseInt(latestTreeMetadata.total_balance)
     return {
-      totalBalance: latestTreeMetadata.total_balance,
+      totalBalance,
       roothash: latestTreeMetadata.roothash,
       dateCreated: latestTreeMetadata.date_created,
     }

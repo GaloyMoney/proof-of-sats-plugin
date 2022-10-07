@@ -9,7 +9,7 @@ export const TreeMetadata = GT.Object<TreeMetadata>({
       description: "The roothash of the tree",
     },
     totalBalance: {
-      type: GT.NonNull(GT.Int),
+      type: GT.NonNull(GT.Float),
       description: "The total balance of the tree",
     },
     dateCreated: {

@@ -4,23 +4,23 @@ import { createLiabilitiesTree } from "@galoymoney/proof-of-sats"
 const accounts = [
   {
     accountId: "123456789012",
-    balance: 133145,
+    balance: 133145543678,
   },
   {
     accountId: "123456789013",
-    balance: 235221,
+    balance: 235221436264,
   },
   {
     accountId: "123456789014",
-    balance: 32452,
+    balance: 324523245765,
   },
   {
     accountId: "123456789015",
-    balance: 234243,
+    balance: 234248645233,
   },
   {
     accountId: "123456789016",
-    balance: 23423,
+    balance: 123456789345,
   },
 ]
 
