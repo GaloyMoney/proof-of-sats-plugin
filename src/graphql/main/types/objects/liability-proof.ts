@@ -11,7 +11,7 @@ const LiabilityProof = GT.Object<LiabilityProof>({
       description: "The walletId to which the proof belongs.",
     },
     totalBalance: {
-      type: GT.NonNull(GT.Int),
+      type: GT.NonNull(GT.Float),
       description: "The total balance of the wallet.",
     },
     partialLiabilityProofs: {

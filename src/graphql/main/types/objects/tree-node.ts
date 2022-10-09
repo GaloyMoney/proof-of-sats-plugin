@@ -9,7 +9,7 @@ export const TreeNode = GT.Object<TreeNode>({
       description: "The hash of the node.",
     },
     sum: {
-      type: GT.NonNull(GT.Int),
+      type: GT.NonNull(GT.Float),
       description: "The sum of the node.",
     },
   }),

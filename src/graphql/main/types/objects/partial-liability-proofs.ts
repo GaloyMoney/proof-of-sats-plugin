@@ -15,7 +15,7 @@ export const PartialLiabilityProofs = GT.Object<PartialLiabilityProofs>({
       description: "The index of the node in the merkle path.",
     },
     balance: {
-      type: GT.NonNull(GT.Int),
+      type: GT.NonNull(GT.Float),
       description: "The balance of the node.",
     },
   }),
