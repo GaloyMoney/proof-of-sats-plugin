@@ -9,5 +9,5 @@ yarn install
 # To run the server locally
 
 ```js
-DB_HOST=localhost make start 
+make start 
 ```

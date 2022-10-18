@@ -15,3 +15,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-migrate
+    environment:
+      - DB_HOST=postgres
