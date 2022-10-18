@@ -17,7 +17,7 @@ const getAccountIds = async () => {
       body: JSON.stringify({ query }),
     })
     const result = await response.json()
-    return result?.data?.listWalletIds
+    return result.data.listWalletIds
   } catch (err) {
     return err
   }
