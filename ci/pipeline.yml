@@ -4,7 +4,7 @@
 #@   return data.values.docker_registry + "/proof-of-sats-plugin-pipeline"
 #@ end
 
-#@ proof-of-sats-plugin_image():
+#@ proof_of_sats_plugin_image():
 #@   return data.values.docker_registry + "/proof-of-sats-plugin"
 #@ end
 
@@ -76,7 +76,7 @@ resources:
     tag: edge
     username: #@ data.values.docker_registry_user
     password: #@ data.values.docker_registry_password
-    repository: #@ proof-of-sats-plugin_image()
+    repository: #@ proof_of_sats_plugin_image()
 
 
 - name: pipeline-tasks
