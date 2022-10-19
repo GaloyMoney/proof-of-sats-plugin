@@ -1,7 +1,7 @@
 #@ load("@ytt:data", "data")
 
 #@ def pipeline_image():
-#@   return data.values.docker_registry + "/galoy-app-pipeline"
+#@   return data.values.docker_registry + "/proof-of-sats-plugin-pipeline"
 #@ end
 
 #@ def galoy_image():
