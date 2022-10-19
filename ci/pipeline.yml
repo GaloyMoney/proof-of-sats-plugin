@@ -4,7 +4,7 @@
 #@   return data.values.docker_registry + "/proof-of-sats-plugin-pipeline"
 #@ end
 
-#@ proof_of_sats_plugin_image():
+#@ def proof_of_sats_plugin_image():
 #@   return data.values.docker_registry + "/proof-of-sats-plugin"
 #@ end
 
