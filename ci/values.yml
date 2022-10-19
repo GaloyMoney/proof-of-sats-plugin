@@ -1,11 +1,11 @@
 #@data/values
 ---
-git_uri: git@github.com:GaloyMoney/galoy-plugin-proof-of-liabilities.git
+git_uri: git@github.com:GaloyMoney/proof-of-sats-plugin.git
 git_branch: main
 git_charts_uri: git@github.com:GaloyMoney/charts.git
 git_charts_branch: main
 github_private_key: ((github.private_key))
-github_token: ((github.api_token))
+github_token: ((github.api_token)
 docker_registry: us.gcr.io/galoy-org
 docker_registry_user: ((docker-creds.username))
 docker_registry_password: ((docker-creds.password))
