@@ -1,25 +1,44 @@
-import { gql } from "apollo-server-core"
-
 import axios from "axios"
 
-jest.setTimeout(30000)
+import { liabilityProofQuery, metadataQuery } from "../queries"
 
 describe("graphql", () => {
   describe("treemetadata query", () => {
     it("should return a tree metadata", async () => {
-      const query = gql`
-        query treeMetadata {
-          treeMetadata {
-            roothash
-            totalBalance
-            dateCreated
-          }
-        }
-      `
-      const { data } = await axios.post("http://localhost:4004/", { query })
-      expect(data.roothash).toBeTruthy()
-      expect(data.totalBalance).toBeTruthy()
-      expect(data.dateCreated).toBeTruthy()
+      const {
+        data: {
+          data: { treeMetadata },
+        },
+      } = await axios.post("http://localhost:4004", { query: metadataQuery })
+
+      expect(treeMetadata.roothash).toBeTruthy()
+      expect(treeMetadata.totalBalance).toBeTruthy()
+      expect(treeMetadata.dateCreated).toBeTruthy()
+    })
+  })
+  describe("liabilityProof query", () => {
+    it("should return a valid liability proof", async () => {
+      const accountId = "123456789012"
+      const {
+        data: {
+          data: {
+            treeMetadata: { roothash },
+          },
+        },
+      } = await axios.post("http://localhost:4004/", { query: metadataQuery })
+      const {
+        data: {
+          data: { liabilityProof },
+        },
+      } = await axios.post("http://localhost:4004/", {
+        query: liabilityProofQuery,
+        variables: { accountId, roothash },
+      })
+
+      expect(liabilityProof.accountId).toBeTruthy()
+      expect(liabilityProof.totalBalance).toBeTruthy()
+      expect(liabilityProof.nonce).toBeTruthy()
+      expect(liabilityProof.partialLiabilityProofs).toBeTruthy()
     })
   })
 })
