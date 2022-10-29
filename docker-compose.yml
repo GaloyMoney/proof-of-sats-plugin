@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   postgres:
@@ -11,7 +11,7 @@ services:
       POSTGRES_DB: galoy-proof-of-sats
     restart: always
   postgres-migrate:
-    depends_on: [ postgres ]
+    depends_on: [postgres]
     build:
       context: .
       dockerfile: Dockerfile-migrate
