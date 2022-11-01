@@ -1,4 +1,3 @@
-import fetch from "node-fetch"
 import { liabilityProofQuery, metadataQuery } from "../queries"
 
 const ServerUrl = "http://localhost:4004/"
