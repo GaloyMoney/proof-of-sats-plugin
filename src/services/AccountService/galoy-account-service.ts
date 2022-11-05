@@ -16,8 +16,8 @@ const getAccountIds = async () => {
       headers,
       body: JSON.stringify({ query }),
     })
-    const result = await response.json()
-    return result.data.listWalletIds
+    const { data: { listWalletIds } } = await response.json()
+    return listWalletIds
   } catch (err) {
     return err
   }
@@ -40,8 +40,7 @@ export const GaloyAccountService = (): IAccountService => {
           headers,
           body: JSON.stringify({ query }),
         })
-        const result = await response.json()
-        const { wallet } = result.data
+        const { data: { wallet } } = await response.json()
         accounts.push({
           accountId: wallet.id,
           balance: wallet.balance,
