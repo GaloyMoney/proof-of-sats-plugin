@@ -1,4 +1,5 @@
-import { GALOY_GRAPHQL_ENDPOINT } from "@config/index"
+const GALOY_GRAPHQL_ENDPOINT =
+  process.env.GALOY_GRAPHQL_ENDPOINT || "http://localhost:4001/graphql"
 const headers = {
   "Content-Type": "application/json",
   "Accept": "application/json",
